@@ -16,6 +16,9 @@ import notificationRoutes from './routes/notification';
 import breedingRoutes from './routes/breeding';
 import path from 'path';
 import { User } from './models/User';
+import cors from 'cors'
+
+
 
 dotenv.config();
 const app = express();
@@ -28,6 +31,10 @@ app.use(express.json({ limit: '10mb' }));
 app.use(cookieParser());
 
 connectDB();
+
+app.use(cors({
+  origin: '*', // Mobil uygulamalardan gelen istekleri kabul etmek için
+}));
 
 app.get('/', (req, res) => {
   res.send('Backend is running!');
