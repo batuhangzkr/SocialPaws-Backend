@@ -11,7 +11,7 @@ router.delete('/delete/:petId', auth, PetController.deletePet);
 router.put('/markAsLost/:petId', auth, PetController.markAsLost);
 router.get('/getAllLostPets', auth, PetController.getAllLostPets)
 router.get('/getUserLostPets', auth, PetController.getUserLostPets)
-router.get('/getAllAdoptionPets', auth, PetController.getAllAdoptionPets)
+router.get('/getAllAdoptionPets', PetController.getAllAdoptionPets)
 router.get('/getAllBreedingPets', auth, PetController.getAllBreedingPets)
 router.put('/markAsAdoption/:petId', auth, PetController.markAsAdoption);
 router.post('/addPet', auth, petImageUpload.single('photo'), PetController.addPet);
