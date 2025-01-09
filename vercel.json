@@ -14,5 +14,12 @@
             "src": "/(.*)",
             "dest": "/src/app.ts"
         }
-    ]
+    ],
+    "env": {
+        "MONGO_URI": "mongodb+srv://kenyagocmeni:orosbuParams@bitirmeprojesi.ogdcf.mongodb.net/?retryWrites=true&w=majority&appName=bitirmeProjesi",
+        "JWT_SECRET": "cilginpaws",
+        "EMAIL_USER": "projectsenderibs@gmail.com",
+        "EMAIL_PASS": "qlwc aiyc dzgw qzwp",
+        "CLIENT_URL": "http://192.168.136.230:5000"
+    }
 }
