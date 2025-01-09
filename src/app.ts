@@ -28,6 +28,7 @@ app.use(express.json({ limit: '10mb' }));
 app.use(cookieParser());
 
 connectDB();
+
 app.get('/', (req, res) => {
   res.send('Backend is running!');
 });
