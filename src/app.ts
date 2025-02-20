@@ -61,11 +61,16 @@ app._router.stack.forEach(function (r: any) {
 
 io.on('connection', (socket) => {
 
+  socket.on('join', (userId) => {
+    socket.join(userId);
+    console.log(`Kullanıcı ${userId} bağlandı`);
+  });
+
   socket.on('sendMessage', async (messageData) => {
     const user = await User.findById(messageData.sender).select('name profilePhoto');
 
     if (!user) {
-      return io.emit('receiveMessage', messageData);
+      return;
     }
 
     const enrichedMessage = {
@@ -77,10 +82,12 @@ io.on('connection', (socket) => {
       },
     };
 
-    io.emit('receiveMessage', enrichedMessage);
+    io.to(messageData.receiver).emit('receiveMessage', enrichedMessage);
+    io.to(messageData.sender).emit('receiveMessage', enrichedMessage);
   });
 
   socket.on('disconnect', () => {
+    console.log('Kullanıcı bağlantısı kesildi');
   });
 });
 
